@@ -2,8 +2,6 @@ import './App.css';
 import styles from 'ansi-styles';
 import convert from 'color-convert';
 import { useState } from 'react';
-import Button from './Button';
-import ColorText from './ColorText';
 
 function colorGenerator() {
   const colorObject = Object.keys(styles.color);
@@ -26,7 +24,8 @@ function colorConverter() {
 
 export default function App() {
   const [randomColor, setRandomColor] = useState(colorConverter);
-
+  const textColor =
+    randomColor === '#000000' ? { color: 'white' } : { color: '#000000' };
   return (
     <div
       style={{
@@ -34,14 +33,12 @@ export default function App() {
       }}
       className="app"
     >
-      <ColorText
-        className="text"
-        styleColor={
-          randomColor === '#000000' ? { color: 'white' } : { color: '#000000' }
-        }
-        color={randomColor}
-      />
-      <Button className="button" color={() => setRandomColor(colorConverter)} />
+      <p className="text" style={textColor}>
+        Generated Color: {randomColor}
+      </p>
+      <button className="button" onClick={() => setRandomColor(colorConverter)}>
+        Generate
+      </button>
     </div>
   );
 }
