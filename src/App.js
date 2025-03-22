@@ -28,14 +28,20 @@ export default function App() {
   const [randomColor, setRandomColor] = useState(colorConverter);
 
   return (
-    <div style={{ background: randomColor }}>
+    <div
+      style={{
+        background: randomColor,
+      }}
+      className="app"
+    >
       <ColorText
+        className="text"
         styleColor={
           randomColor === '#000000' ? { color: 'white' } : { color: '#000000' }
         }
         color={randomColor}
       />
-      <Button color={() => setRandomColor(colorConverter)} />
+      <Button className="button" color={() => setRandomColor(colorConverter)} />
     </div>
   );
 }

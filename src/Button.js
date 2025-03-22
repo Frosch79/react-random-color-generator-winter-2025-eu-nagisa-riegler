@@ -1,3 +1,7 @@
 export default function Button(props) {
-  return <button onClick={props.color}>Generate!</button>;
+  return (
+    <button className={props.className} onClick={props.color}>
+      Generate!
+    </button>
+  );
 }
