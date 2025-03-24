@@ -26,8 +26,7 @@ function colorConverter() {
 
 export default function App() {
   const [randomColor, setRandomColor] = useState(colorConverter);
-  const textColor =
-    randomColor === '#000000' ? { color: 'white' } : { color: '#000000' };
+
   return (
     <div
       style={{
