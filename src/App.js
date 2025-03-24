@@ -1,7 +1,7 @@
-import './App.css';
 import styles from 'ansi-styles';
 import convert from 'color-convert';
 import { useState } from 'react';
+import cssStyle from './App.module.scss';
 import Button from './Button';
 import ColorText from './ColorText';
 
@@ -29,20 +29,20 @@ export default function App() {
   console.log(randomColor);
 
   return (
-    <div
-      style={{
-        backgroundColor: randomColor,
-      }}
-      className="app"
-    >
+    <div style={{ backgroundColor: randomColor }} className={cssStyle.app}>
       <ColorText
-        className="text"
+        className={cssStyle.text}
         styleColor={
-          randomColor === '#000000' ? { color: 'white' } : { color: '#000000' }
+          randomColor === '#000000'
+            ? { color: '#ffffff' }
+            : { color: '#000000' }
         }
         color={randomColor}
       />
-      <Button className="button" color={() => setRandomColor(colorConverter)} />
+      <Button
+        className={cssStyle.button}
+        color={() => setRandomColor(colorConverter)}
+      />
     </div>
   );
 }
