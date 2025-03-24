@@ -26,11 +26,12 @@ function colorConverter() {
 
 export default function App() {
   const [randomColor, setRandomColor] = useState(colorConverter);
+  console.log(randomColor);
 
   return (
     <div
       style={{
-        background: randomColor,
+        backgroundColor: randomColor,
       }}
       className="app"
     >
@@ -40,7 +41,6 @@ export default function App() {
           randomColor === '#000000' ? { color: 'white' } : { color: '#000000' }
         }
         color={randomColor}
-        text={'Generated Color: ' + randomColor}
       />
       <Button className="button" color={() => setRandomColor(colorConverter)} />
     </div>
