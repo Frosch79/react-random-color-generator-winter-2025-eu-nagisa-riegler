@@ -40,6 +40,7 @@ export default function App() {
           randomColor === '#000000' ? { color: 'white' } : { color: '#000000' }
         }
         color={randomColor}
+        text={'Generated Color: ' + randomColor}
       />
       <Button className="button" color={() => setRandomColor(colorConverter)} />
     </div>
