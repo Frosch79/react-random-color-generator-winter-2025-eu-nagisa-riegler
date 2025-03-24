@@ -36,9 +36,7 @@ export default function App() {
       <p className="text" style={textColor}>
         Generated Color: {randomColor}
       </p>
-      <button className="button" onClick={() => setRandomColor(colorConverter)}>
-        Generate
-      </button>
+      <button onClick={() => setRandomColor(colorConverter)}>Generate</button>
     </div>
   );
 }
