@@ -35,7 +35,7 @@ export default function App() {
       }}
       className={cssStyle.app}
     >
-      {`Generated Color: ${randomColor}`}
+      {`Generated Color: ${randomColor}Generate`}
       <Button
         className={cssStyle.button}
         color={() => setRandomColor(colorConverter)}
