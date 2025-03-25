@@ -36,7 +36,7 @@ export default function App() {
         }}
         className={cssStyle.app}
       >
-        {`Generated Color: ${randomColor}`}
+        {`Generated Color: ${randomColor.toLowerCase()}`}
       </div>
       <div className={cssStyle.app} style={{ padding: 0 }}>
         <Button
