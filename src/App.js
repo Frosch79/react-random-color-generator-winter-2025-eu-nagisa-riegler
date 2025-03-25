@@ -28,18 +28,22 @@ export default function App() {
   console.log(randomColor);
 
   return (
-    <div
-      style={{
-        backgroundColor: randomColor,
-        color: randomColor === '#000000' ? '#ffffff' : '#000000',
-      }}
-      className={cssStyle.app}
-    >
-      {`Generated Color: ${randomColor}Generate`}
-      <Button
-        className={cssStyle.button}
-        color={() => setRandomColor(colorConverter)}
-      />
-    </div>
+    <>
+      <div
+        style={{
+          backgroundColor: randomColor,
+          color: randomColor === '#000000' ? '#ffffff' : '#000000',
+        }}
+        className={cssStyle.app}
+      >
+        {`Generated Color: ${randomColor}`}
+      </div>
+      <div className={cssStyle.app} style={{ padding: 0 }}>
+        <Button
+          className={cssStyle.button}
+          color={() => setRandomColor(colorConverter)}
+        />
+      </div>
+    </>
   );
 }
