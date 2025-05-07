@@ -1,38 +1,33 @@
-import styles from 'ansi-styles';
-import convert from 'color-convert';
 import { useState } from 'react';
 import cssStyle from './App.module.scss';
 import Button from './Button';
 
-function colorGenerator() {
-  const colorObject = Object.keys(styles.color);
-
+function generateColor() {
   // Random color
-  const randomColor =
-    colorObject[Math.floor(Math.random() * (colorObject.length - 4))];
-
-  return randomColor;
+  const hexRandomColor = (Math.random() * 0xfffff * 1000000).toString(16);
+  return '#' + hexRandomColor.slice(0, 6);
 }
 
-function colorConverter() {
-  const getColor = colorGenerator();
-  const getAnsiColor = styles.color[getColor].open;
-  const ansiToNum = getAnsiColor.replace('\x1B[', '').replace('m', '');
-  const convertColor = '#' + convert.ansi16.hex(Number(ansiToNum));
+const checkColor = (hexcolor) => {
+  const r = parseInt(hexcolor[1] + hexcolor[2], 16);
+  const g = parseInt(hexcolor[3] + hexcolor[4], 16);
+  const b = parseInt(hexcolor[5] + hexcolor[6], 16);
 
-  return convertColor;
-}
+  /* source => http://www.w3.org/TR/AERT#color-contrast */
+  const checkedColor =
+    (r * 299 + g * 587 + b * 114) / 1000 < 125 ? '#ffffff' : '#000000';
+  return checkedColor;
+};
 
 export default function App() {
-  const [randomColor, setRandomColor] = useState(colorConverter);
-  console.log(randomColor);
+  const [randomColor, setRandomColor] = useState(generateColor());
 
   return (
     <>
       <div
         style={{
           backgroundColor: randomColor,
-          color: randomColor === '#000000' ? '#ffffff' : '#000000',
+          color: checkColor(generateColor()),
         }}
         className={cssStyle.app}
       >
@@ -41,7 +36,7 @@ export default function App() {
       <div className={cssStyle.app} style={{ padding: 0 }}>
         <Button
           className={cssStyle.button}
-          color={() => setRandomColor(colorConverter)}
+          color={() => setRandomColor(generateColor())}
         />
       </div>
     </>

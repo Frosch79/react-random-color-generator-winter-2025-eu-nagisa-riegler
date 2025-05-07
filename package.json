@@ -23,8 +23,6 @@
   },
   "dependencies": {
     "@upleveled/react-scripts": "5.1.2",
-    "ansi-styles": "^6.2.1",
-    "color-convert": "^3.0.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "sass": "1.86.0"
